@@ -1,8 +1,12 @@
 module.exports = function (req, res, next) {
-  var userName = req.body.user_name;
-  var botPayload = {
-    text : 'Hello, ' + userName + '! (ito bot)'
-  };
+    var userName = req.body.user_name;
 
-  return res.status(200).json(botPayload);
-}
+    if (userName !== 'hellobot')
+        return res.status(403);
+
+    var botPayload = {
+        text: 'Hello, ' + userName + '! (ito bot)'
+    };
+
+    return res.status(200).json(botPayload);
+};
